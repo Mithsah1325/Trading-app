@@ -1,22 +1,17 @@
-// models/User.js
-const mongoose = require('mongoose');
-
-const UserSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  cash: {
-    type: Number,
-    default: 100000
-  },
-  portfolioValue: {
-    type: Number,
-    default: 100000
-  }
-}, {
-  timestamps: true
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: { type: String, unique: true },
+  password: String,
+  balance: { type: Number, default: 10000 },
+  currentWeek: { type: Number, default: 1 },
+  currentTask: { type: Number, default: 0 },
+  history: [
+    {
+      week: Number,
+      taskId: Number,
+      choice: String,
+      correct: Boolean,
+      balanceAfter: Number,
+    },
+  ],
 });
-
-module.exports = mongoose.model('User', UserSchema);

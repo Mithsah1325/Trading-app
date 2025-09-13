@@ -5,15 +5,14 @@ const TaskScenario = ({ headline, choices, bestChoice, onComplete }) => {
 
   const handlePick = (choice) => {
     setPicked(choice);
-    const points = choice === bestChoice ? 20 : 0;
-    onComplete(points);
+    onComplete(choice);
   };
 
   return (
     <div className="p-6 bg-white rounded-2xl shadow mb-6">
       <h3 className="text-xl font-bold mb-3">Scenario Challenge</h3>
-      <p className="mb-4 italic">📰 {headline}</p>
-      <div className="flex gap-3">
+      <p className="mb-4 italic">{headline}</p>
+      <div className="flex gap-3 flex-wrap">
         {choices.map((ch, idx) => (
           <button
             key={idx}
@@ -30,7 +29,7 @@ const TaskScenario = ({ headline, choices, bestChoice, onComplete }) => {
       {picked && (
         <p className="mt-4 font-semibold">
           {picked === bestChoice
-            ? "✅ Great pick! You earned 20 points."
+            ? "✅ Correct! Points awarded."
             : "❌ Not optimal. Better luck next time."}
         </p>
       )}

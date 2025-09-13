@@ -1,4 +1,3 @@
-// MainContent.jsx
 import React from 'react';
 import LessonsSection from './Lessons/LessonsSection';
 import SimulatorSection from './simulator/SimulatorSection';
@@ -6,7 +5,7 @@ import QuizSection from './quiz/QuizSection';
 import ProgressSection from './progress/ProgressSection';
 import GlossarySection from './glossary/GlossarySection';
 
-const MainContent = ({ activeSection, userProgress, setUserProgress }) => {
+const MainContent = ({ activeSection, user, setUser, userProgress, setUserProgress }) => {
   const renderContent = () => {
     switch (activeSection) {
       case 'lessons':
@@ -16,7 +15,14 @@ const MainContent = ({ activeSection, userProgress, setUserProgress }) => {
       case 'quiz':
         return <QuizSection />;
       case 'progress':
-        return <ProgressSection userProgress={userProgress} />;
+        return (
+          <ProgressSection
+            user={user}                  // ✅ Pass user
+            setUser={setUser}            // ✅ Pass setUser
+            userProgress={userProgress}
+            setUserProgress={setUserProgress}
+          />
+        );
       case 'glossary':
         return <GlossarySection />;
       default:
