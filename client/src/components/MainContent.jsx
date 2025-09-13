@@ -1,3 +1,4 @@
+// MainContent.jsx
 import React from 'react';
 import LessonsSection from './Lessons/LessonsSection';
 import SimulatorSection from './simulator/SimulatorSection';
@@ -24,7 +25,7 @@ const MainContent = ({ activeSection, userProgress, setUserProgress }) => {
   };
 
   return (
-    <div className="bg-white bg-opacity-95 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-2xl">
+    <div className="bg-white text-black rounded-2xl shadow-lg p-6 md:p-8 my-8">
       {renderContent()}
     </div>
   );

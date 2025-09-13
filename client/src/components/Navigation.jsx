@@ -1,25 +1,26 @@
+// Navigation.jsx
 import React from 'react';
 
 const Navigation = ({ activeSection, setActiveSection }) => {
   const navItems = [
-    { id: 'lessons', label: '📚 Lessons', icon: '📚' },
-    { id: 'simulator', label: '🎮 Simulator', icon: '🎮' },
-    { id: 'quiz', label: '🧠 Quiz', icon: '🧠' },
-    { id: 'progress', label: '📊 Progress', icon: '📊' },
-    { id: 'glossary', label: '📖 Glossary', icon: '📖' }
+    { id: 'lessons', label: '📚 Lessons' },
+    { id: 'simulator', label: '🎮 Simulator' },
+    { id: 'quiz', label: '🧠 Quiz' },
+    { id: 'progress', label: '📊 Progress' },
+    { id: 'glossary', label: '📖 Glossary' }
   ];
 
   return (
-    <div className="flex flex-wrap justify-center gap-3 mb-8">
+    <div className="flex flex-wrap justify-center gap-4 mb-8">
       {navItems.map(item => (
         <button
           key={item.id}
           onClick={() => setActiveSection(item.id)}
-          className={`px-6 py-3 rounded-full font-medium transition-all duration-300 backdrop-blur-md ${
+          className={`px-6 py-3 rounded-full font-medium transition-transform duration-300 border ${
             activeSection === item.id
-             ? 'bg-white bg-opacity-30 text-black transform -translate-y-1 shadow-lg'
-             : 'bg-white bg-opacity-20 text-gray-800 hover:bg-opacity-30 hover:text-black hover:transform hover:-translate-y-1'
-}`}
+              ? 'bg-white text-blue-600 border-gray-300 shadow-md transform -translate-y-1'
+              : 'bg-white text-black border-gray-300 hover:bg-gray-100 hover:shadow-sm'
+          }`}
         >
           {item.label}
         </button>

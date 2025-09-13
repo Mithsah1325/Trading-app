@@ -67,9 +67,10 @@ const SimulatorSection = () => {
   };
 
   return (
-    <div>
+    <div className="py-12 px-4 max-w-6xl mx-auto">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Options Trading Simulator</h2>
 
+      {/* Controls */}
       <SimulatorControls
         stocks={stocks}
         selectedStock={selectedStock}
@@ -85,6 +86,7 @@ const SimulatorSection = () => {
         onSimulate={simulateTrade}
       />
 
+      {/* Black-Scholes Price & Payoff */}
       <div className="bg-white rounded-2xl p-6 shadow-md mb-6">
         <h4 className="text-xl font-bold mb-2 text-gray-800 text-center">Black-Scholes Price 💰: ${optionPrice}</h4>
         <p className="text-center text-gray-600 mb-4">
@@ -110,7 +112,33 @@ const SimulatorSection = () => {
         </ResponsiveContainer>
       </div>
 
-      {result && <SimulatorResult result={result} selectedStock={selectedStock} optionType={optionType} strikePrice={strikePrice} />}
+      {/* Simulation Result */}
+      {result && (
+        <>
+          <SimulatorResult
+            result={result}
+            selectedStock={selectedStock}
+            optionType={optionType}
+            strikePrice={strikePrice}
+          />
+
+          {/* Show Real Trading Redirect ONLY if profitable */}
+          {result.profitable && (
+            <div className="mt-8 flex justify-center">
+              <div
+                className="bg-white text-black p-6 rounded-3xl cursor-pointer transition-transform duration-300 transform hover:-translate-y-2 hover:shadow-2xl text-center w-full max-w-md border border-gray-200"
+                onClick={() => window.open('https://www.fidelity.com/options-trading', '_blank')}
+              >
+                <div className="text-5xl mb-4 animate-bounce">🚀</div>
+                <h3 className="text-2xl font-bold mb-2">Try Real Options Trading</h3>
+                <p className="text-sm opacity-80">
+                  Take your skills to the real market! Visit Fidelity's Options Trading Portal.
+                </p>
+              </div>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };
