@@ -1,0 +1,174 @@
+/* App.css */
+.App {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.app-header {
+  background-color: #282c34;
+  padding: 10px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-ticker {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.ticker-symbol {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.current-price {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #61dafb;
+}
+
+.iv {
+  background-color: #61dafb;
+  color: #282c34;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  height: calc(100vh - 80px);
+}
+
+.left-panel, .center-panel, .right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chart-container, .news-feed, .option-chain, .trade-ticket, .leaderboard {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.news-feed {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.news-item {
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border-left: 4px solid #61dafb;
+}
+
+.news-text {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.news-effect {
+  font-size: 0.8em;
+  color: #666;
+}
+
+.option-chain table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.option-chain th, .option-chain td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.option-chain button {
+  padding: 5px 10px;
+  margin: 2px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.expiry-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.expiry-selector button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+}
+
+.expiry-selector button.active {
+  background-color: #61dafb;
+  color: white;
+}
+
+.trade-ticket form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.trade-ticket button {
+  padding: 10px;
+  background-color: #61dafb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.leaderboard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard th, .leaderboard td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.profit {
+  color: green;
+  font-weight: bold;
+}
+
+.loss {
+  color: red;
+  font-weight: bold;
+}
