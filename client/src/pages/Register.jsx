@@ -1,26 +1,40 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Register = () => {
+const Register = ({ setShowRegister, setUser }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleRegister = async () => {
+    if (!name || !email || !password) {
+      alert("❌ Please fill all fields.");
+      return;
+    }
+
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/register", {
+      const res = await axios.post("http://localhost:5000/api/register", {
         name,
         email,
         password,
       });
+
       alert("✅ Registered successfully! Please login.");
+
+      // Optionally switch to login view
+      if (setShowRegister) setShowRegister(false);
+
+      // Clear form
       setName("");
       setEmail("");
       setPassword("");
     } catch (err) {
-      alert("❌ Registration failed. Try again.");
+      console.error(err.response?.data || err.message);
+      alert(
+        `❌ Registration failed: ${err.response?.data?.error || "Try again"}`
+      );
     } finally {
       setLoading(false);
     }
@@ -76,12 +90,12 @@ const Register = () => {
 
         <p className="text-center text-sm text-gray-500 mt-6">
           Already have an account?{" "}
-          <a
-            href="/login"
+          <button
+            onClick={() => setShowRegister(false)}
             className="text-green-600 font-medium hover:underline"
           >
             Login here
-          </a>
+          </button>
         </p>
       </div>
     </div>
